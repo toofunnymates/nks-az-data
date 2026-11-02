@@ -1,6 +1,6 @@
 (function(){
   var JSON_URL='https://raw.githubusercontent.com/toofunnymates/nks-az-data/main/nks-az-live.json';
-  var DEFAULT_CATS={'series-1':'Fanmade Hindi Dub','series-2':'Upcoming','series-3':'Upcoming'};
+  var DEFAULT_CATS={'series-1':'Dubbed by Saurav Chakraborty','series-2':'Upcoming','series-3':'Upcoming'};
   function applyView(view){
     var tabs=document.querySelectorAll('#nks-tabs .nks-tab');
     for(var i=0;i<tabs.length;i++){tabs[i].classList.toggle('active',tabs[i].getAttribute('data-view')===view);}
