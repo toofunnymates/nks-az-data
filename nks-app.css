@@ -203,3 +203,19 @@
   <b:include data='blog' name='all-head-content'/>
 </head>
 
+
+/* Hide Contempo theme elements, show only the NKS app */
+.header, .header-bar, .blog-header, .hero-image, .page-header,
+.blog-title, .header-inner, #header, .titlewrapper,
+.post-feed, .blog-posts, .main-inner .column-center-outer {
+  display: none !important;
+}
+body {
+  background: #000 !important;
+  background-image: none !important;
+}
+#nks-app-root {
+  background: #fff;
+  min-height: 100vh;
+  display: block !important;
+}
