@@ -103,6 +103,16 @@
     }).catch(function(){});
     applyView('home');
   }
+
+  /* Anti-scrape: block right-click on player, deter casual downloading */
+  document.addEventListener('contextmenu',function(e){
+    var t=e.target;
+    if(t&&t.closest&&(t.closest('#nks-player')||t.closest('.nks-player-overlay')||t.closest('#nks-embed-frame')||t.closest('.nks-hero-art'))){e.preventDefault();}
+  });
+  document.addEventListener('dragstart',function(e){
+    var t=e.target;
+    if(t&&t.closest&&(t.closest('#nks-player')||t.closest('.nks-player-overlay'))){e.preventDefault();}
+  });
   var tries=0;
   var iv=setInterval(function(){
     tries++;
