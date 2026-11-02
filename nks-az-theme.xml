@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html b:css='false' b:js='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='nks-az-stream.xml' b:templateVersion='1.4.0' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <title>Humara Wala Oggy — Dubbed by Saurav Chakraborty | NKS AZ</title>
+<meta name='description' content='Watch Humara Wala Oggy, dubbed by Saurav Chakraborty. All 95 nick hindi dub episodes streaming free on NKS AZ.'/>
+<meta name='keywords' content='Humara Wala Oggy, nick hindi dub episodes, oggy nick hindi, nick hindi episodes, dubbed by Saurav Chakraborty, NKS AZ'/>
+<meta property='og:title' content='Humara Wala Oggy — Dubbed by Saurav Chakraborty | NKS AZ'/>
+<meta property='og:description' content='Watch all 95 nick hindi dub episodes of Humara Wala Oggy, dubbed by Saurav Chakraborty, streaming free.'/>
+<meta property='og:type' content='website'/>
+<meta property='og:url' content='https://nksaz.blogspot.com/'/>
+<script type='application/ld+json'>{"@context":"https://schema.org","@type":"TVSeries","name":"Humara Wala Oggy","description":"Dubbed by Saurav Chakraborty. All 95 nick hindi dub episodes streaming on NKS AZ.","url":"https://nksaz.blogspot.com/","numberOfEpisodes":95,"inLanguage":"hi"}</script>
+  <!-- was: <title><data:blog.pageTitle/></title> — Blogger was not substituting
+       the data tag, so the tab showed the literal code. Static title fixes it. -->
+
+  <b:skin><![CDATA[
+  /*
+   * NKS AZ — Netflix-style streaming theme v1.4.0
+   * Homepage: hero + "choose a series" picker + per-series episode rows,
+   * fed live from the backend /api/catalog.
+   * Static pages (e.g. Watch) render their own full-page UI; the theme
+   * stays out of the way and only provides the dark background.
+   */
+  ]]></b:skin>
+
+  <b:template-skin>
+    <b:variable default='1.4.0' name='theme.version' type='string' value='1.4.0'/>
+  </b:template-skin>
+
+  <style>
+@import url('https://cdn.jsdelivr.net/gh/toofunnymates/nks-az-data@main/nks-app.css');
+  /* ============ NKS AZ v1.4.0 — "2006 called" edition ============
+     Early-YouTube + Windows XP nostalgia theme.
+     Tahoma everywhere, Luna-blue title bars, beveled XP buttons,
+     blue #03C links, star ratings, and a marquee. Obviously. */
+  :root{
+    --nks-link:#0033CC;
+    --nks-xp-blue1:#3D95FF; --nks-xp-blue2:#0F56CE; --nks-xp-blue3:#0843A8;
+    --nks-silver:#ECE9D8; --nks-silver2:#E3DECB;
+    --nks-teal1:#5A9BD4; --nks-teal2:#3A6EA5; --nks-teal3:#2F5E8F;
+    --nks-yt-red:#CC0000;
+    --nks-star:#E8A013;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:Tahoma,Verdana,Arial,sans-serif;font-size:13px;color:#000;
+    background:var(--nks-teal2);
+    background:linear-gradient(180deg,var(--nks-teal1) 0%,var(--nks-teal2) 45%,var(--nks-teal3) 100%) fixed;
+    min-height:100vh;
+  }
+  a{color:var(--nks-link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{max-width:100%;display:block}
+
+  /* Luna title bar (shared) */
+  .nks-titlebar{
+    background:linear-gradient(180deg,var(--nks-xp-blue1) 0%,var(--nks-xp-blue2) 55%,var(--nks-xp-blue3) 100%);
+    color:#fff;font-weight:bold;font-size:13px;padding:5px 10px;
+    border-radius:8px 8px 0 0;text-shadow:1px 1px 2px rgba(0,0,0,.45);
+    letter-spacing:.3px;
+  }
+
+  /* XP button (shared) */
+  .nks-xpbtn{
+    font-family:Tahoma,Verdana,Arial,sans-serif;font-size:12px;color:#000;
+    background:linear-gradient(180deg,#FFFFFF 0%,var(--nks-silver) 48%,var(--nks-silver2) 100%);
+    border:1px solid #003C74;border-radius:3px;padding:4px 14px;cursor:pointer;
+  }
+  .nks-xpbtn:hover{box-shadow:inset 0 0 0 1px #FFD97A}
+  .nks-xpbtn:active{border-style:inset;background:var(--nks-silver2)}
+
+  /* ---------- Masthead : old-YouTube header ---------- */
+  .nks-nav{background:#fff;border-bottom:2px solid #999;padding:8px 4vw;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .nks-brand{font-size:24px;font-weight:bold;letter-spacing:.5px;white-space:nowrap;color:#000}
+  .nks-brand:hover{text-decoration:none}
+  .nks-brand .nks-tube{background:var(--nks-yt-red);color:#fff;border-radius:7px;padding:1px 8px;margin-left:2px}
+  .nks-tagline{font-size:11px;color:#666;font-style:italic;margin:2px 0 0 2px}
+  .nks-search{display:flex;gap:6px;align-items:center;margin-left:auto}
+  .nks-search input{
+    font-family:Tahoma,Arial,sans-serif;font-size:13px;padding:4px 6px;width:min(320px,40vw);
+    border:2px inset #fff;background:#fff;color:#000;
+  }
+  .nks-nav-links{display:flex;gap:6px;font-size:12px;align-items:center}
+  .nks-nav-links a{padding:2px 4px}
+  .nks-nav-links .sep{color:#999}
+  .nks-marquee{background:#FFFFCC;border-bottom:1px solid #999;color:#000;font-size:12px;padding:3px 0}
+  .nks-marquee marquee{display:block}
+
+  /* ---------- Hero : "Featured Video" XP window ---------- */
+  .nks-hero{max-width:1000px;margin:18px auto;padding:0 4vw}
+  .nks-hero-win{background:#fff;border:1px solid #7A7A7A;border-radius:8px 8px 4px 4px;overflow:hidden;box-shadow:3px 3px 8px rgba(0,0,0,.35)}
+  .nks-hero-body{display:flex;gap:18px;padding:16px;flex-wrap:wrap}
+  .nks-hero-art{width:320px;max-width:100%;aspect-ratio:16/9;background:#000;border:2px inset #fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:44px;flex:0 0 auto}
+  .nks-hero-art img{width:100%;height:100%;object-fit:cover}
+  .nks-hero-inner{flex:1;min-width:240px}
+  .nks-hero-kicker{font-size:11px;font-weight:bold;color:var(--nks-yt-red);letter-spacing:1px;margin-bottom:6px}
+  .nks-hero-inner h1{font-size:20px;margin:0 0 8px;color:#000}
+  .nks-hero-inner h1 a{color:var(--nks-link)}
+  .nks-hero-inner p{font-size:13px;color:#333;line-height:1.5;margin:0 0 14px}
+  .nks-btn{display:inline-block;cursor:pointer}
+  .nks-hero-stars{color:var(--nks-star);font-size:15px;letter-spacing:2px;margin-bottom:10px}
+
+  /* ---------- Content panels ---------- */
+  #nks-home{max-width:1000px;margin:0 auto;padding:0 4vw 20px}
+  .nks-loading{background:#fff;border:1px solid #7A7A7A;border-radius:4px;padding:30px;text-align:center;font-size:14px;margin-top:18px}
+  .nks-section{background:#fff;border:1px solid #7A7A7A;border-radius:8px 8px 4px 4px;margin-top:18px;overflow:hidden;box-shadow:2px 2px 6px rgba(0,0,0,.25)}
+  .nks-section h2{
+    margin:0;background:linear-gradient(180deg,var(--nks-xp-blue1) 0%,var(--nks-xp-blue2) 55%,var(--nks-xp-blue3) 100%);
+    color:#fff;font-size:14px;font-weight:bold;padding:6px 12px;text-shadow:1px 1px 2px rgba(0,0,0,.45);
+  }
+  .nks-section .nks-sub{font-size:12px;color:#555;margin:0;padding:8px 12px 0}
+  .nks-series-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));padding:12px}
+  .nks-series-card{background:#fff;border:1px solid #999;border-radius:4px;overflow:hidden;color:#000}
+  .nks-series-card:hover{border-color:var(--nks-link);text-decoration:none}
+  .nks-series-art{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:bold;color:rgba(255,255,255,.9);position:relative;overflow:hidden}
+  .nks-series-art img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .nks-series-body{padding:10px 12px 12px}
+  .nks-series-body h3{font-size:14px;margin:0 0 4px;color:var(--nks-link)}
+  .nks-series-card:hover .nks-series-body h3{text-decoration:underline}
+  .nks-series-body p{color:#555;font-size:12px;line-height:1.45;margin:0 0 8px}
+  .nks-count{display:inline-block;font-size:11px;font-weight:bold;color:#000;background:#D4D0C8;border:1px outset #fff;border-radius:3px;padding:2px 8px}
+
+  .nks-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));padding:12px}
+  .nks-card{background:#fff;border:1px solid #999;border-radius:3px;overflow:hidden;position:relative;color:#000}
+  .nks-card:hover{border-color:var(--nks-link);text-decoration:none;box-shadow:2px 2px 5px rgba(0,0,0,.2)}
+  .nks-poster{aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center;color:#888;font-size:12px;position:relative;overflow:hidden;border-bottom:1px solid #999}
+  .nks-poster img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .nks-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:34px;background:rgba(0,0,0,.65);border:1px solid #fff;border-radius:6px;opacity:0;z-index:2}
+  .nks-play::after{content:'';position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent}
+  .nks-card:hover .nks-play{opacity:1}
+  .nks-card-body{padding:8px 10px 10px}
+  .nks-card-body h3{font-size:13px;margin:0 0 3px;color:var(--nks-link);font-weight:bold}
+  .nks-card:hover .nks-card-body h3{text-decoration:underline}
+  .nks-card-meta{font-size:11px;color:#666}
+  .nks-card-meta::after{content:' \2605\2605\2605\2605\2606';color:var(--nks-star);letter-spacing:1px}
+  .nks-coming{color:#555;font-size:13px;padding:16px 12px}
+
+  /* ---------- Footer : guestbook era ---------- */
+  .nks-footer{background:var(--nks-silver);border-top:2px outset #fff;margin-top:26px;padding:16px 4vw 22px;font-size:11px;color:#333;text-align:center}
+  .nks-footer .nks-brand{font-size:16px;display:block;margin-bottom:6px}
+  .nks-footer .nks-disclaimer{font-size:11px;line-height:1.6;max-width:720px;margin:0 auto 8px}
+  .nks-footer .nks-bestviewed{color:#666;margin:6px 0}
+  .nks-footer .nks-counter{font-weight:bold;color:#000}
+
+  .nks-page-body{min-height:60vh;background:#fff;max-width:1000px;margin:18px auto;padding:16px;border:1px solid #7A7A7A;border-radius:4px}
+  .nks-player-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:none;background:#000;z-index:2}
+  .nks-server-panel{display:none;margin-top:12px;background:#fff;border:2px groove #fff;padding:12px}
+  .nks-server-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .nks-server-title{font-size:13px;font-weight:bold;color:#000}
+  .nks-server-status{color:#333;font-size:12px;line-height:1.5;margin-top:4px;max-width:760px;font-family:Tahoma,Verdana,Arial,sans-serif}
+  .nks-server-status b{color:#000}
+  .nks-auto-btn{font-family:Tahoma,Verdana,Arial,sans-serif;font-size:12px;color:#000;background:linear-gradient(180deg,#FFFFFF 0%,#ECE9D8 48%,#E3DECB 100%);border:1px solid #003C74;border-radius:3px;padding:4px 14px;cursor:pointer}
+  .nks-auto-btn.on{border:2px inset #fff;background:#D4D0C8;font-weight:bold}
+  .nks-server-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:8px;margin-top:10px}
+  .nks-server-btn{font-family:Tahoma,Verdana,Arial,sans-serif;background:linear-gradient(180deg,#FFFFFF 0%,#ECE9D8 48%,#E3DECB 100%);color:#000;border:1px solid #003C74;border-radius:3px;padding:8px;text-align:left;cursor:pointer;min-height:60px}
+  .nks-server-btn.active{border:2px inset #fff;background:#D4D0C8}
+  .nks-server-btn:disabled{opacity:.45;cursor:not-allowed}
+  .nks-server-btn .sn{display:flex;align-items:center;gap:8px;font-weight:bold;font-size:13px}
+  .nks-server-btn .sd{display:block;color:#555;font-size:11px;margin-top:4px;line-height:1.35}
+  .nks-dot{width:9px;height:9px;border-radius:50%;background:#777;display:inline-block;flex:0 0 auto}
+  .nks-dot.fast{background:#2ecc71}.nks-dot.slow{background:#f5b041}.nks-dot.down{background:#ff5c5c}
+  .nks-tool-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .nks-tool-btn{font-family:Tahoma,Verdana,Arial,sans-serif;font-size:12px;color:#000;background:linear-gradient(180deg,#FFFFFF 0%,#ECE9D8 48%,#E3DECB 100%);border:1px solid #003C74;border-radius:3px;padding:5px 14px;cursor:pointer;font-weight:bold}
+  .nks-tool-btn.secondary{font-weight:normal}
+
+  .post-outer{margin:0}
+  .blog-pager,.post-footer,.comments{display:none}
+
+  /* ---------- Player : XP window ---------- */
+  .nks-player-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.5);display:none;overflow-y:auto;padding:4vh 3vw}
+  .nks-player-overlay.open{display:block}
+  .nks-player-wrap{max-width:920px;margin:0 auto;background:var(--nks-silver);border:1px solid #0831D9;border-radius:8px 8px 4px 4px;overflow:hidden;box-shadow:4px 4px 14px rgba(0,0,0,.5)}
+  .nks-player-top{
+    display:flex;align-items:center;gap:10px;padding:4px 6px 4px 10px;
+    background:linear-gradient(180deg,var(--nks-xp-blue1) 0%,var(--nks-xp-blue2) 55%,var(--nks-xp-blue3) 100%);
+    border-radius:7px 7px 0 0;
+  }
+  .nks-player-top-title{color:#fff;font-weight:bold;font-size:13px;text-shadow:1px 1px 2px rgba(0,0,0,.45);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nks-xp-close{
+    background:linear-gradient(180deg,#F2A183 0%,#DE5A2B 55%,#C23A0E 100%);
+    border:1px solid #fff;border-radius:3px;color:#fff;font-weight:bold;
+    width:30px;height:24px;cursor:pointer;font-size:12px;line-height:1;font-family:Tahoma,Arial,sans-serif;
+  }
+  .nks-xp-close:hover{filter:brightness(1.15)}
+  .nks-player-body{padding:12px}
+  .nks-player-title{font-size:16px;margin:0 0 4px;color:#000}
+  .nks-player-title a{color:var(--nks-link)}
+  .nks-player-meta{color:#555;font-size:12px;margin-bottom:10px}
+  .nks-player-video{position:relative;background:#000;aspect-ratio:16/9;border:2px inset #fff;overflow:hidden}
+  .nks-player-video video{width:100%;height:100%;display:block}
+  .nks-watermark{position:absolute;z-index:5;pointer-events:none;color:#fff;opacity:.1;font-size:13px;font-weight:600;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.8);transition:top 1.2s ease,left 1.2s ease;font-family:Tahoma,Arial,sans-serif}
+  .nks-brand-watermark{position:absolute;z-index:5;pointer-events:none;left:50%;bottom:22%;transform:translateX(-50%);text-align:center;color:#fff;opacity:.25;user-select:none;-webkit-user-select:none;animation:nks-float 6s ease-in-out infinite;font-family:Tahoma,Arial,sans-serif}
+  .nks-brand-watermark .bw-top{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase}
+  .nks-brand-watermark .bw-url{display:block;font-size:13px;font-weight:700;letter-spacing:1px;margin-top:2px;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+  @keyframes nks-float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+  .nks-player-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#ccc;background:#000;z-index:4;font-size:13px}
+  .nks-spinner{width:40px;height:40px;border:4px solid #444;border-top-color:var(--nks-xp-blue1);border-radius:50%;animation:nks-spin 1s linear infinite}
+  @keyframes nks-spin{to{transform:rotate(360deg)}}
+  .nks-player-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .nks-dl-btn{display:none}
+  .nks-player-err{background:#fff;border:1px solid #C00;color:#C00;padding:10px 12px;border-radius:4px;margin-top:12px;display:none;font-size:12px}
+  .nks-player-note{color:#555;font-size:11px;margin-top:10px;line-height:1.5}
+
+  /* ============ Responsive: PC / tablet / phone ============ */
+  /* PC (>1024px) is the default above. */
+
+  /* Tablet portrait + small laptops */
+  @media (max-width:1024px){
+    .nks-hero{padding:0 3vw}
+    #nks-home{padding:0 3vw 20px}
+    .nks-hero-art{width:280px}
+    .nks-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+    .nks-player-wrap{margin:0 2vw}
+  }
+
+  /* Phones */
+  @media (max-width:640px){
+    body{font-size:12px}
+    .nks-nav{gap:10px;padding:8px 3vw}
+    .nks-brand{font-size:20px}
+    .nks-tagline{display:none}
+    .nks-search{margin-left:0;width:100%;order:3}
+    .nks-search input{flex:1;width:auto}
+    .nks-nav-links{font-size:11px}
+    .nks-marquee{font-size:11px}
+    .nks-hero{padding:0 3vw;margin:12px auto}
+    .nks-hero-body{flex-direction:column;padding:12px}
+    .nks-hero-art{width:100%}
+    .nks-hero-inner{min-width:0}
+    .nks-hero-inner h1{font-size:17px}
+    #nks-home{padding:0 3vw 16px}
+    .nks-section{margin-top:12px}
+    .nks-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:8px}
+    .nks-series-grid{grid-template-columns:1fr;padding:8px}
+    .nks-card-body{padding:6px 8px 8px}
+    .nks-card-body h3{font-size:12px}
+    .nks-card-meta{font-size:10px}
+    .nks-player-overlay{padding:2vh 2vw}
+    .nks-player-wrap{margin:0}
+    .nks-player-body{padding:8px}
+    .nks-player-title{font-size:14px}
+    .nks-player-top-title{font-size:12px}
+    .nks-server-list{grid-template-columns:repeat(2,1fr)}
+    .nks-server-btn{min-height:56px;padding:6px}
+    .nks-server-btn .sn{font-size:12px}
+    /* comfortable touch targets on phones */
+    .nks-xpbtn,.nks-tool-btn,.nks-auto-btn{min-height:44px}
+    .nks-xp-close{width:34px;height:30px}
+    .nks-footer{font-size:10px;padding:12px 3vw 18px}
+  }
+
+  /* Very small phones */
+  @media (max-width:380px){
+    .nks-grid{gap:6px}
+    .nks-server-list{grid-template-columns:1fr 1fr}
+  }
+  </style>
+
+  <link rel='stylesheet' href='https://cdn.plyr.io/3.7.8/plyr.css'/>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Baloo:ital,wght@0,700;1,700&amp;display=swap'/>
+  <b:include data='blog' name='all-head-content'/>
+</head>
+
+<body>
+  <script>
+  var NKS_CONFIG = {
+    BACKEND_URL: 'https://nks-az-stream.onrender.com'
+  };
+  </script>
+
+  <b:if cond='data:blog.url == data:blog.homepageUrl'>
+    <nav class='nks-nav'>
+      <div>
+        <a class='nks-brand' expr:href='data:blog.homepageUrl'>NKS<span class='nks-tube'>AZ</span></a>
+        <div class='nks-tagline'>Broadcast Yourself.</div>
+      </div>
+      <form class='nks-search' id='nks-search-form' action='#'>
+        <input id='nks-search' type='text' placeholder='Search episodes...' autocomplete='off'/>
+        <button class='nks-xpbtn' type='submit'>Search</button>
+      </form>
+      <div class='nks-nav-links'>
+        <a expr:href='data:blog.homepageUrl'>Home</a><span class='sep'>|</span>
+        <a href='#series'>Series</a><span class='sep'>|</span>
+        <a href='mailto:nksaz2511@gmail.com'>Guestbook</a>
+      </div>
+    </nav>
+    <div class='nks-marquee'><marquee scrollamount='4'>&#9733; Welcome to NKS AZ &#9733; Your personal video corner &#9733; New episodes added all the time &#9733; Best viewed at 1024x768 &#9733; Sign the guestbook! &#9733;</marquee></div>
+
+    <section class='nks-hero'>
+      <div class='nks-hero-win'>
+        <div class='nks-titlebar'>Featured Video</div>
+        <div class='nks-hero-body'>
+          <div class='nks-hero-art' id='nks-hero-art'><span>&#9654;</span></div>
+          <div class='nks-hero-inner'>
+            <div class='nks-hero-kicker'>NKS AZ ORIGINALS</div>
+            <h1 id='nks-hero-title'>Pick your series.</h1>
+            <div class='nks-hero-stars'>&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <p id='nks-hero-desc'>Three series, one home. Choose what you are in the mood for and start watching.</p>
+            <a class='nks-btn nks-xpbtn' href='#series' id='nks-hero-play'>&#9654; Browse Series</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main id='nks-home'>
+      <div class='nks-loading' id='nks-loading'>Loading series&#8230;</div>
+    </main>
+
+    <!-- Inline episode player overlay (no /p/ page needed) -->
+    <div class='nks-player-overlay' id='nks-player-overlay'>
+      <div class='nks-player-wrap'>
+        <div class='nks-player-top'>
+          <span class='nks-player-top-title' id='nks-player-top-title'>NKS AZ</span>
+          <button class='nks-xp-close' id='nks-player-close' title='Close'>&#10005;</button>
+        </div>
+        <div class='nks-player-body'>
+        <h2 class='nks-player-title' id='nks-ep-title'>Loading…</h2>
+        <div class='nks-player-meta' id='nks-ep-meta'></div>
+        <div class='nks-player-video' id='nks-player-video'>
+          <video id='nks-video' playsinline='playsinline' controls='controls' controlsList='nodownload' crossorigin='anonymous'></video>
+          <iframe id='nks-embed-frame' title='NKS AZ video player' allow='autoplay; fullscreen; picture-in-picture; encrypted-media' allowfullscreen='allowfullscreen' referrerpolicy='strict-origin-when-cross-origin'></iframe>
+          <div class='nks-watermark' id='nks-watermark'>NKS AZ</div>
+          <div class='nks-brand-watermark'><span class='bw-top'>watch more on</span><span class='bw-url'>nksaz.blogspot.com</span></div>
+          <div class='nks-player-loading' id='nks-player-loading'><div class='nks-spinner'></div><div>Connecting to stream… (first load can take ~30–60s)</div></div>
+        </div>
+        <div class='nks-player-err' id='nks-player-err'></div>
+
+        <div class='nks-server-panel' id='nks-server-panel'>
+          <div class='nks-server-head'>
+            <div>
+              <div class='nks-server-title'>Streaming server</div>
+              <div class='nks-server-status' id='nks-server-status'>Checking your connection…</div>
+            </div>
+            <button class='nks-auto-btn on' id='nks-auto-server' type='button'>Auto best server: ON</button>
+          </div>
+          <div class='nks-server-list' id='nks-server-list'></div>
+          <div class='nks-tool-row'>
+            <button class='nks-tool-btn' id='nks-copy-link' type='button'>Copy episode link</button>
+            <button class='nks-tool-btn secondary' id='nks-next-server' type='button'>Try next server</button>
+          </div>
+        </div>
+        <div class='nks-player-actions'>
+          <button class='nks-dl-btn' id='nks-dl-btn' disabled='disabled'>&#8681; Download episode</button>
+        </div>
+        <p class='nks-player-note'>If one server is slow or unavailable, Auto mode tries the next configured server. Copy Link shares only the NKS AZ episode page, never a host or file link.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    var NKS_LOCAL_CATALOG = {"series":[{"id":"series-1","title":"Humara Wala Oggy","description":"A fanmade collection of the lost hindi dubbed episodes of oggy and the cockroaches A.K.A Humara Wala Oggy","poster_url":"https://img-place.com/fjqbm63bomu8_t.jpg","episodes":[{"id":"s01e01","title":"Bitter Chocolate","description":"","season":1,"episode":1,"poster_url":"https://img-place.com/fjqbm63bomu8_t.jpg"},{"id":"s01e02","title":"It's All Under Control","description":"","season":1,"episode":2,"poster_url":""},{"id":"s01e03","title":"French Fries","description":"","season":1,"episode":3,"poster_url":""},{"id":"s01e04","title":"Mission Oggy","description":"","season":1,"episode":4,"poster_url":""},{"id":"s01e05","title":"It's Been A Hard Day's Noise","description":"","season":1,"episode":5,"poster_url":""},{"id":"s01e06","title":"The Patient (Redub)","description":"","season":1,"episode":6,"poster_url":""},{"id":"s01e06a","title":"The Patient","description":"","season":1,"episode":6,"poster_url":""},{"id":"s01e07","title":"Shake Oggy Shake (Redub)","description":"","season":1,"episode":7,"poster_url":""},{"id":"s01e08","title":"The Rise And The Fall (Redub)","description":"","season":1,"episode":8,"poster_url":""},{"id":"s01e09","title":"It S Been A Small World (Redub)","description":"","season":1,"episode":9,"poster_url":""},{"id":"s01e09a","title":"It S Been A Small World","description":"","season":1,"episode":9,"poster_url":""},{"id":"s01e10","title":"Happy Birthday (Redub)","description":"","season":1,"episode":10,"poster_url":""},{"id":"s01e11","title":"Metamorphosis (Redub)","description":"","season":1,"episode":11,"poster_url":""},{"id":"s01e11a","title":"Metamorphosis","description":"","season":1,"episode":11,"poster_url":""},{"id":"s01e12","title":"Jealousy (Redub)","description":"","season":1,"episode":12,"poster_url":""},{"id":"s01e12a","title":"Jealousy","description":"","season":1,"episode":12,"poster_url":""},{"id":"s01e13","title":"Wrong Side Of The Bed","description":"","season":1,"episode":13,"poster_url":""},{"id":"s01e17","title":"Mouseagator","description":"","season":1,"episode":17,"poster_url":""},{"id":"s01e18","title":"Nine Months And Continue","description":"","season":1,"episode":18,"poster_url":""},{"id":"s01e27","title":"Rock N Roll Altitude","description":"","season":1,"episode":27,"poster_url":""},{"id":"s01e29","title":"Oggy Diet","description":"","season":1,"episode":29,"poster_url":""},{"id":"s01e31","title":"The Time Machine","description":"","season":1,"episode":31,"poster_url":""},{"id":"s01e33","title":"Globulopolis","description":"","season":1,"episode":33,"poster_url":""},{"id":"s01e36","title":"The Bait Bites Back","description":"","season":1,"episode":36,"poster_url":""},{"id":"s01e38","title":"Deep End","description":"","season":1,"episode":38,"poster_url":""},{"id":"s01e40","title":"Granny S Day","description":"","season":1,"episode":40,"poster_url":""},{"id":"s01e41","title":"The Dictator","description":"","season":1,"episode":41,"poster_url":""},{"id":"s01e42","title":"Memory Lane","description":"","season":1,"episode":42,"poster_url":""},{"id":"s01e43","title":"Toy's R Oggy","description":"","season":1,"episode":43,"poster_url":""},{"id":"s01e44","title":"Cat Kit","description":"","season":1,"episode":44,"poster_url":""},{"id":"s01e46","title":"Oggy Goes Snailling","description":"","season":1,"episode":46,"poster_url":""},{"id":"s01e47","title":"Docu-Mentally","description":"","season":1,"episode":47,"poster_url":""},{"id":"s01e48","title":"Oggy Vs Super-Roach","description":"","season":1,"episode":48,"poster_url":""},{"id":"s01e51","title":"Duck Stop","description":"","season":1,"episode":51,"poster_url":""},{"id":"s01e53","title":"A Bird Of Ill Omen","description":"","season":1,"episode":53,"poster_url":""},{"id":"s01e54","title":"The Ghost Hunter","description":"","season":1,"episode":54,"poster_url":""},{"id":"s01e55","title":"Winner Take It S All","description":"","season":1,"episode":55,"poster_url":""},{"id":"s01e56","title":"Bugball","description":"","season":1,"episode":56,"poster_url":""},{"id":"s01e57","title":"Happy Campers","description":"","season":1,"episode":57,"poster_url":""},{"id":"s01e58","title":"The Piggy Bank","description":"","season":1,"episode":58,"poster_url":""},{"id":"s01e60","title":"Oggy's Clone","description":"","season":1,"episode":60,"poster_url":""},{"id":"s01e61","title":"T.V. Obsession","description":"","season":1,"episode":61,"poster_url":""},{"id":"s01e62","title":"Race To The Finish!","description":"","season":1,"episode":62,"poster_url":""},{"id":"s01e67","title":"Cloning Around","description":"","season":1,"episode":67,"poster_url":""},{"id":"s01e68","title":"Three Wises And You Re Out","description":"","season":1,"episode":68,"poster_url":""},{"id":"s01e71","title":"The Neighbors Cat","description":"","season":1,"episode":71,"poster_url":""},{"id":"s01e73","title":"Honeymoon","description":"","season":1,"episode":73,"poster_url":""},{"id":"s02e01","title":"Fame And Glory","description":"","season":2,"episode":1,"poster_url":""},{"id":"s02e04","title":"Crazy Shopping","description":"","season":2,"episode":4,"poster_url":""},{"id":"s02e05","title":"Milk Diet","description":"","season":2,"episode":5,"poster_url":""},{"id":"s02e09","title":"Roachy Redneck (Last 2M)","description":"","season":2,"episode":9,"poster_url":""},{"id":"s02e11","title":"Perpetual Motion","description":"","season":2,"episode":11,"poster_url":""},{"id":"s02e13","title":"Penguin Pandemonium","description":"","season":2,"episode":13,"poster_url":""},{"id":"s02e14","title":"Life_s a Beach","description":"","season":2,"episode":14,"poster_url":""},{"id":"s02e18","title":"Saving Private Deedee","description":"","season":2,"episode":18,"poster_url":""},{"id":"s02e19","title":"Take Cover","description":"","season":2,"episode":19,"poster_url":""},{"id":"s02e27","title":"The Technofiles","description":"","season":2,"episode":27,"poster_url":""},{"id":"s02e28","title":"Go For It Jack","description":"","season":2,"episode":28,"poster_url":""},{"id":"s02e29","title":"Do Not Lean Out Of The Window","description":"","season":2,"episode":29,"poster_url":""},{"id":"s02e31","title":"7 Minutes   Counting","description":"","season":2,"episode":31,"poster_url":""},{"id":"s02e34","title":"Un-Bear-Able Bears","description":"","season":2,"episode":34,"poster_url":""},{"id":"s02e40","title":"- Face Off","description":"","season":2,"episode":40,"poster_url":""},{"id":"s02e44","title":"The Pied Bagpiper","description":"","season":2,"episode":44,"poster_url":""},{"id":"s02e51","title":"Don T Rock The Cradle","description":"","season":2,"episode":51,"poster_url":""},{"id":"s02e54","title":"Home Braker","description":"","season":2,"episode":54,"poster_url":""},{"id":"s02e55","title":"Joey and The Magic Bean","description":"","season":2,"episode":55,"poster_url":""},{"id":"s02e55a","title":"Sitcom","description":"","season":2,"episode":55,"poster_url":""},{"id":"s02e63","title":"Mission To Earth","description":"","season":2,"episode":63,"poster_url":""},{"id":"s02e65","title":"A Tooth For A Tooth","description":"","season":2,"episode":65,"poster_url":""},{"id":"s02e68","title":"The Blob","description":"","season":2,"episode":68,"poster_url":""},{"id":"s02e69","title":"Boxing Fever","description":"","season":2,"episode":69,"poster_url":""},{"id":"s02e72","title":"Up To No Good","description":"","season":2,"episode":72,"poster_url":""},{"id":"s02e75","title":"Welcome To Paris","description":"","season":2,"episode":75,"poster_url":""},{"id":"s02e78","title":"Chatter Box","description":"","season":2,"episode":78,"poster_url":""},{"id":"s03e03","title":"Night Watchmen","description":"","season":3,"episode":3,"poster_url":""},{"id":"s03e04","title":"Abandoned Cockroaches","description":"","season":3,"episode":4,"poster_url":""},{"id":"s03e05","title":"Vip Party","description":"","season":3,"episode":5,"poster_url":""},{"id":"s03e08","title":"Casino","description":"","season":3,"episode":8,"poster_url":""},{"id":"s03e09","title":"Santa Oggy","description":"","season":3,"episode":9,"poster_url":""},{"id":"s03e10","title":"Just Married","description":"","season":3,"episode":10,"poster_url":""},{"id":"s03e12","title":"First Flight","description":"","season":3,"episode":12,"poster_url":""},{"id":"s03e14","title":"The Living Carrots","description":"","season":3,"episode":14,"poster_url":""},{"id":"s03e17","title":"Golden Eggs","description":"","season":3,"episode":17,"poster_url":""},{"id":"s03e18","title":"The Fugitive","description":"","season":3,"episode":18,"poster_url":""},{"id":"s03e19","title":"Priceless Roaches","description":"","season":3,"episode":19,"poster_url":""},{"id":"s03e25","title":"Horse Ride","description":"","season":3,"episode":25,"poster_url":""},{"id":"s03e30","title":"Oggys Grandma","description":"","season":3,"episode":30,"poster_url":""},{"id":"s03e34","title":"Double Oggy's","description":"","season":3,"episode":34,"poster_url":""},{"id":"s03e36","title":"Deep Trouble","description":"","season":3,"episode":36,"poster_url":""},{"id":"s03e37","title":"Formula 1","description":"","season":3,"episode":37,"poster_url":""},{"id":"s03e38","title":"To Serve And Protect","description":"","season":3,"episode":38,"poster_url":""},{"id":"s03e39","title":"The Cicada And The Cockroach","description":"","season":3,"episode":39,"poster_url":""},{"id":"s04e43","title":"Splits Hairs","description":"","season":4,"episode":43,"poster_url":""}]},{"id":"series-2","title":"Series Two","description":"Rename me — tell Rumi the real series title and description.","poster_url":"","episodes":[]},{"id":"series-3","title":"Series Three","description":"Rename me — tell Rumi the real series title and description.","poster_url":"","episodes":[]}]};
+    var NKS_COMING_SOON = "data:image/jpeg;base64,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";
+    var NKS_SERVER_DATA = {"providers":[{"key":"filemoon","label":"Server 1","probe":"https://filemoon.to/favicon.ico","india_rank":1,"global_rank":1},{"key":"streamwish","label":"Server 2","probe":"https://streamwish.to/favicon.ico","india_rank":2,"global_rank":2},{"key":"vidhide","label":"Server 3","probe":"https://vidhide.to/favicon.ico","india_rank":3,"global_rank":3},{"key":"voe","label":"Server 4","probe":"https://voe.sx/favicon.ico","india_rank":4,"global_rank":4},{"key":"lulustream","label":"Server 5","probe":"https://lulustream.com/favicon.ico","india_rank":5,"global_rank":5}],"episodes":{"s01e01":{"filemoon":{"enc":"Bh8HEQkUTUMNHgAVFRtWBhcIUhBfXEpVHhoMGA4IW1wNAQMeS04VSQUVQhRDQUIRHlJCDxUHRFQXHVIUCQoDCQwbCkMAAAAAAAMAAAAAAAAAAAMAAAA","provider":"filemoon"}}}};
+    /* NKS-AZ live registry: episode servers merge at load from hosted JSON */
+    fetch('https://raw.githubusercontent.com/toofunnymates/nks-az-data/main/nks-az-live.json').then(function(r){return r.json()}).then(function(d){for(var k in d.servers)window.NKS_SERVER_DATA.episodes[k]=d.servers[k]})
+    </script>
+    <script>
+    //<![CDATA[
+    /* NKS AZ ad-blocker: blocks non-user popups opened by the video host. */
+    (function(){
+      var nativeOpen = window.open;
+      var lastGesture = 0;
+      function markGesture(){ lastGesture = Date.now(); }
+      ['pointerdown','touchend','click','keydown'].forEach(function(ev){
+        window.addEventListener(ev, markGesture, {capture:true, passive:true});
+      });
+      window.open = function(){
+        if (Date.now() - lastGesture < 1500) { return nativeOpen.apply(window, arguments); }
+        return null; /* blocked popup/popunder */
+      };
+    })();
+    //]]>
+    </script>
+    <script src='https://cdn.plyr.io/3.7.8/plyr.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js'></script>
+    <script>
+    //<![CDATA[
+    (function(){
+      var cfg = window.NKS_CONFIG || {};
+      var home = document.getElementById('nks-home');
+      function esc(s){ return String(s == null ? '' : s); }
+
+      /* ---------- Inline player ---------- */
+      var overlay = document.getElementById('nks-player-overlay');
+      var video = document.getElementById('nks-video');
+      var plyrInstance = null;
+      var wmTimer = null;
+      var currentEpId = null;
+
+      function nksShowError(msg){
+        var box = document.getElementById('nks-player-err');
+        box.style.display = 'block';
+        box.textContent = msg;
+        document.getElementById('nks-player-loading').style.display = 'none';
+      }
+      function nksPlaceWatermark(){
+        var wm = document.getElementById('nks-watermark');
+        var ip = window.nksViewerIp || 'unknown';
+        var loc = window.nksViewerLoc || '';
+        var dev = window.nksViewerDev || '';
+        var extra = '';
+        if (loc) { extra += ' • ' + loc; }
+        if (dev) { extra += ' • ' + dev; }
+        wm.textContent = 'NKS AZ • ' + ip + extra;
+        wm.style.top = (5 + Math.random() * 80).toFixed(1) + '%';
+        wm.style.left = (5 + Math.random() * 70).toFixed(1) + '%';
+      }
+
+      /* ---------- Multi-server official embeds (v1.4.0) ---------- */
+      var nksEmbedTimer = null;
+      var nksCurrentServer = null;
+      var nksServerOrder = [];
+      var nksServerResults = {};
+      var nksServerFailed = {};
+      var nksAutoServer = true;
+
+      function nksProviders(){ return (window.NKS_SERVER_DATA && window.NKS_SERVER_DATA.providers) || []; }
+      function nksProviderByKey(key){
+        var ps = nksProviders();
+        for (var i = 0; i < ps.length; i++) { if (ps[i].key === key) { return ps[i]; } }
+        return null;
+      }
+      function nksEpisodeServerMap(id){ return ((window.NKS_SERVER_DATA && window.NKS_SERVER_DATA.episodes) || {})[id] || {}; }
+      function nksConfiguredServers(id){
+        var map = nksEpisodeServerMap(id);
+        return nksProviders().filter(function(p){ return !!map[p.key]; });
+      }
+      function nksDecodeServerRef(enc, id, key){
+        var clean = String(enc || '').replace(/-/g, '+').replace(/_/g, '/');
+        while (clean.length % 4) { clean += '='; }
+        var bin = atob(clean);
+        var keyText = 'nksaz.blogspot.com|' + id + '|' + key;
+        var out = '';
+        for (var i = 0; i < bin.length; i++) { out += String.fromCharCode(bin.charCodeAt(i) ^ keyText.charCodeAt(i % keyText.length)); }
+        try { return decodeURIComponent(escape(out)); } catch (e) { return out; }
+      }
+      function nksRegion(){
+        var tz = '';
+        try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+        var lang = navigator.language || '';
+        if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta' || /-IN$/i.test(lang)) { return { code:'IN', label:'India' }; }
+        return { code:'GLOBAL', label:'your area' };
+      }
+      function nksConnectionLabel(){
+        var c = navigator.connection || null;
+        if (!c) { return 'connection type unavailable'; }
+        var bits = [];
+        if (c.effectiveType) { bits.push(c.effectiveType.toUpperCase()); }
+        if (typeof c.downlink === 'number') { bits.push('about ' + c.downlink + ' Mbps'); }
+        if (c.saveData) { bits.push('Data Saver on'); }
+        return bits.join(' • ') || 'connection type unavailable';
+      }
+      function nksSetServerStatus(html){
+        var el = document.getElementById('nks-server-status');
+        if (el) { el.innerHTML = html; }
+      }
+      function nksProbeServer(provider){
+        if (!provider.probe) { return Promise.resolve({ ok:false, ms:9999 }); }
+        return new Promise(function(resolve){
+          var done = false;
+          var start = performance.now();
+          var img = new Image();
+          var timer = setTimeout(function(){ finish(false, 4500); }, 4500);
+          function finish(ok, forced){
+            if (done) { return; }
+            done = true;
+            clearTimeout(timer);
+            resolve({ ok:ok, ms:(typeof forced === 'number' ? forced : Math.round(performance.now() - start)) });
+          }
+          img.onload = function(){ finish(true); };
+          img.onerror = function(){ finish(true); };
+          img.src = provider.probe + (provider.probe.indexOf('?') >= 0 ? '&' : '?') + 'nks_probe=' + Date.now() + '_' + Math.random().toString(36).slice(2);
+        });
+      }
+      function nksRenderServerButtons(){
+        var list = document.getElementById('nks-server-list');
+        if (!list || !currentEpId) { return; }
+        list.innerHTML = '';
+        nksConfiguredServers(currentEpId).forEach(function(p){
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'nks-server-btn' + (nksCurrentServer === p.key ? ' active' : '');
+          btn.disabled = !!nksServerFailed[p.key];
+          var r = nksServerResults[p.key];
+          var dot = 'nks-dot';
+          var sub = 'Not checked yet';
+          if (nksServerFailed[p.key]) { dot += ' down'; sub = 'Failed in this session'; }
+          else if (r) { dot += (r.ms <= 900 ? ' fast' : ' slow'); sub = 'Responded in about ' + r.ms + ' ms'; }
+          if (nksCurrentServer === p.key) { sub = 'Now selected' + (r ? ' • about ' + r.ms + ' ms' : ''); }
+          var name = document.createElement('span'); name.className = 'sn';
+          var d = document.createElement('span'); d.className = 'nks-dot ' + dot.replace('nks-dot ', '').replace('nks-dot', '');
+          if (dot === 'nks-dot') { d.className = 'nks-dot'; }
+          name.appendChild(d);
+          name.appendChild(document.createTextNode(p.label));
+          var detail = document.createElement('span'); detail.className = 'sd'; detail.textContent = sub;
+          btn.appendChild(name); btn.appendChild(detail);
+          btn.addEventListener('click', function(){
+            nksAutoServer = false;
+            var autoBtn = document.getElementById('nks-auto-server');
+            if (autoBtn) { autoBtn.textContent = 'Auto best server: OFF'; autoBtn.classList.remove('on'); }
+            nksLoadServer(currentEpId, p.key, 'manual');
+          });
+          list.appendChild(btn);
+        });
+      }
+      function nksFailCurrentServer(reason){
+        if (!nksCurrentServer) { return; }
+        nksServerFailed[nksCurrentServer] = true;
+        if (nksEmbedTimer) { clearTimeout(nksEmbedTimer); nksEmbedTimer = null; }
+        var idx = nksServerOrder.indexOf(nksCurrentServer);
+        for (var i = idx + 1; i < nksServerOrder.length; i++) {
+          if (!nksServerFailed[nksServerOrder[i]]) { nksLoadServer(currentEpId, nksServerOrder[i], 'fallback'); return; }
+        }
+        for (var j = 0; j < nksServerOrder.length; j++) {
+          if (!nksServerFailed[nksServerOrder[j]]) { nksLoadServer(currentEpId, nksServerOrder[j], 'fallback'); return; }
+        }
+        document.getElementById('nks-player-loading').style.display = 'none';
+        nksRenderServerButtons();
+        nksShowError('The selected server did not start (' + reason + '), and no working backup server is left in this session. Please try again in a short while or choose a server manually.');
+      }
+      function nksLoadServer(id, key, reason){
+        var provider = nksProviderByKey(key);
+        var entry = nksEpisodeServerMap(id)[key];
+        if (!provider || !entry) { return; }
+        if (nksEmbedTimer) { clearTimeout(nksEmbedTimer); nksEmbedTimer = null; }
+        nksCurrentServer = key;
+        var frame = document.getElementById('nks-embed-frame');
+        var loading = document.getElementById('nks-player-loading');
+        video.style.display = 'none';
+        frame.style.display = 'block';
+        loading.style.display = 'flex';
+        loading.lastElementChild.textContent = 'Connecting to ' + provider.label + '…';
+        document.getElementById('nks-player-err').style.display = 'none';
+        var result = nksServerResults[key];
+        nksSetServerStatus('<b>' + provider.label + ' selected.</b> ' + (reason === 'fallback' ? 'Automatic fallback after the previous server did not start. ' : '') + nksRegion().label + ' profile • ' + nksConnectionLabel() + (result ? ' • host responded in about ' + result.ms + ' ms.' : '.'));
+        nksRenderServerButtons();
+        frame.src = nksDecodeServerRef(entry.enc, id, entry.provider || key);
+        nksEmbedTimer = setTimeout(function(){
+          if (frame.style.display !== 'none' && nksCurrentServer === key) { nksFailCurrentServer('load timeout'); }
+        }, 18000);
+      }
+      function nksChooseServer(id){
+        var configured = nksConfiguredServers(id);
+        nksServerOrder = configured.map(function(p){ return p.key; });
+        nksServerResults = {};
+        nksServerFailed = {};
+        if (!navigator.onLine) {
+          document.getElementById('nks-player-loading').style.display = 'none';
+          nksSetServerStatus('<b>You appear to be offline.</b> Reconnect and reopen the episode.');
+          nksRenderServerButtons();
+          return;
+        }
+        nksSetServerStatus('Checking your connection and choosing the best server…');
+        nksRenderServerButtons();
+        var jobs = configured.map(function(p){
+          return nksProbeServer(p).then(function(r){ nksServerResults[p.key] = r; });
+        });
+        Promise.all(jobs).then(function(){
+          var region = nksRegion();
+          var scored = configured.map(function(p){
+            var rank = region.code === 'IN' ? (p.india_rank || p.global_rank || 99) : (p.global_rank || 99);
+            var ms = (nksServerResults[p.key] || { ms:9999 }).ms;
+            return { provider:p, score:(Math.min(ms, 4500) / 45) + (rank * 18) };
+          });
+          scored.sort(function(a, b){ return a.score - b.score; });
+          nksServerOrder = scored.map(function(x){ return x.provider.key; });
+          var chosen = nksAutoServer ? scored[0].provider : configured[0];
+          nksLoadServer(id, chosen.key, 'auto');
+        });
+      }
+      function nksFindLocalEpisode(id){
+        var found = null;
+        ((window.NKS_LOCAL_CATALOG && window.NKS_LOCAL_CATALOG.series) || []).forEach(function(s){
+          (s.episodes || []).forEach(function(e){ if (e.id === id) { found = { series:s, episode:e }; } });
+        });
+        return found;
+      }
+      function nksOpenExternal(id){
+        var configured = nksConfiguredServers(id);
+        var panel = document.getElementById('nks-server-panel');
+        if (!configured.length) { if (panel) { panel.style.display = 'none'; } return false; }
+        if (panel) { panel.style.display = 'block'; }
+        var found = nksFindLocalEpisode(id);
+        if (found) {
+          document.getElementById('nks-ep-title').textContent = found.episode.title || id;
+          document.getElementById('nks-ep-meta').textContent = 'Season ' + found.episode.season + ' • Episode ' + found.episode.episode + ' • ' + found.series.title;
+        } else {
+          document.getElementById('nks-ep-title').textContent = id;
+          document.getElementById('nks-ep-meta').textContent = '';
+        }
+        document.getElementById('nks-player-loading').style.display = 'flex';
+        nksChooseServer(id);
+        return true;
+      }
+      document.getElementById('nks-embed-frame').addEventListener('load', function(){
+        var frame = document.getElementById('nks-embed-frame');
+        if (!currentEpId || !nksCurrentServer || !frame.getAttribute('src')) { return; }
+        if (nksEmbedTimer) { clearTimeout(nksEmbedTimer); nksEmbedTimer = null; }
+        document.getElementById('nks-player-loading').style.display = 'none';
+        var p = nksProviderByKey(nksCurrentServer);
+        nksSetServerStatus('<b>' + (p ? p.label : 'Server') + ' loaded.</b> Press Play inside the video if it does not begin automatically. If the host shows an error, use “Try next server”.');
+        nksRenderServerButtons();
+      });
+      document.getElementById('nks-auto-server').addEventListener('click', function(){
+        nksAutoServer = !nksAutoServer;
+        this.textContent = 'Auto best server: ' + (nksAutoServer ? 'ON' : 'OFF');
+        this.classList.toggle('on', nksAutoServer);
+        if (nksAutoServer && currentEpId && nksConfiguredServers(currentEpId).length) { nksChooseServer(currentEpId); }
+      });
+      document.getElementById('nks-next-server').addEventListener('click', function(){
+        if (!currentEpId || !nksServerOrder.length) { return; }
+        var idx = nksServerOrder.indexOf(nksCurrentServer);
+        var next = nksServerOrder[(idx + 1) % nksServerOrder.length];
+        if (next && next !== nksCurrentServer) { nksLoadServer(currentEpId, next, 'manual'); }
+      });
+      document.getElementById('nks-copy-link').addEventListener('click', function(){
+        if (!currentEpId) { return; }
+        var url = 'https://nksaz.blogspot.com/#watch/' + encodeURIComponent(currentEpId);
+        var btn = this;
+        function done(){ btn.textContent = 'Copied ✓'; setTimeout(function(){ btn.textContent = 'Copy episode link'; }, 1600); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('Copy this NKS AZ episode link:', url); });
+        } else { window.prompt('Copy this NKS AZ episode link:', url); }
+      });
+
+      function nksDownload(id){
+        var btn = document.getElementById('nks-dl-btn');
+        btn.disabled = true;
+        btn.textContent = 'Preparing…';
+        fetch(cfg.BACKEND_URL + '/api/dl-token/' + encodeURIComponent(id)).then(function(r){
+          if (!r.ok) { throw new Error('HTTP ' + r.status); }
+          return r.json();
+        }).then(function(data){
+          var url = data.short_url;
+          if (!url) { url = data.download_url; }
+          location.href = url;
+        }).catch(function(err){
+          nksShowError('Could not prepare download: ' + err.message);
+          btn.disabled = false;
+          btn.innerHTML = '&#8681; Download episode';
+        });
+      }
+      function openPlayer(id){
+        if (!id) { return; }
+        currentEpId = id;
+        var nksPanelReset = document.getElementById('nks-server-panel');
+        if (nksPanelReset) { nksPanelReset.style.display = 'none'; }
+        var nksFrameReset = document.getElementById('nks-embed-frame');
+        if (nksFrameReset) { nksFrameReset.removeAttribute('src'); nksFrameReset.style.display = 'none'; }
+        video.style.display = 'block';
+        nksCurrentServer = null;
+        nksServerFailed = {};
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        document.getElementById('nks-ep-title').textContent = 'Loading…';
+        document.getElementById('nks-ep-meta').textContent = '';
+        document.getElementById('nks-player-err').style.display = 'none';
+        document.getElementById('nks-player-loading').style.display = 'flex';
+        var dlBtn = document.getElementById('nks-dl-btn');
+        dlBtn.disabled = true;
+        dlBtn.innerHTML = '&#8681; Download episode';
+        dlBtn.onclick = function(){ nksDownload(currentEpId); };
+        if (nksOpenExternal(id)) {
+          nksPlaceWatermark();
+          if (wmTimer) { clearInterval(wmTimer); }
+          wmTimer = setInterval(nksPlaceWatermark, 8000);
+          return;
+        }
+        nksPlaceWatermark();
+        if (wmTimer) { clearInterval(wmTimer); }
+        wmTimer = setInterval(nksPlaceWatermark, 8000);
+        fetch(cfg.BACKEND_URL + '/watch/' + encodeURIComponent(id)).then(function(r){
+          if (!r.ok) { throw new Error('Episode not found (HTTP ' + r.status + ').'); }
+          return r.json();
+        }).then(function(data){
+          document.getElementById('nks-ep-title').textContent = data.title || id;
+          var nksTopTitle = document.getElementById('nks-player-top-title');
+          if (nksTopTitle) { nksTopTitle.textContent = data.title || id; }
+          window.nksViewerIp = data.viewer_ip || 'unknown';
+          window.nksViewerLoc = data.viewer_location || '';
+          window.nksViewerDev = data.viewer_device || '';
+          nksPlaceWatermark();
+          var done = function(){ return data; };
+          return fetch(cfg.BACKEND_URL + '/api/catalog').then(function(x){ return x.json(); }).then(function(cat){
+            var found = null;
+            (cat.series || []).forEach(function(s){
+              (s.episodes || []).forEach(function(e){ if (e.id === id) { found = e; } });
+            });
+            if (found) {
+              document.getElementById('nks-ep-meta').textContent = 'Season ' + found.season + ' • Episode ' + found.episode;
+            }
+            return done();
+          }).catch(function(){ return done(); });
+        }).then(function(data){
+          // Prefer HLS (30s chunks, faster start) if available, fallback to MP4
+          // If HLS fails (e.g. server can't generate segments), fallback to MP4
+          var hlsUrl = data.hls_url;
+          var mp4Url = data.stream_url;
+          var hlsFailed = false;
+          function useMp4Fallback() {
+            if (hlsFailed) return;
+            hlsFailed = true;
+            if (window.nksHls) { try { window.nksHls.destroy(); } catch(e){} window.nksHls = null; }
+            video.src = mp4Url;
+          }
+          if (hlsUrl && window.Hls && window.Hls.isSupported()) {
+            if (window.nksHls) { try { window.nksHls.destroy(); } catch(e){} }
+            window.nksHls = new Hls({ maxBufferLength: 60 });
+            window.nksHls.on(Hls.Events.ERROR, function(event, errData) {
+              if (errData.fatal) { useMp4Fallback(); }
+            });
+            // If HLS doesn't start within 15s, fallback to MP4
+            setTimeout(function() {
+              if (video.readyState === 0 && !hlsFailed) { useMp4Fallback(); }
+            }, 15000);
+            window.nksHls.loadSource(hlsUrl);
+            window.nksHls.attachMedia(video);
+          } else if (hlsUrl && video.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari native HLS
+            video.src = hlsUrl;
+            video.addEventListener('error', function() { useMp4Fallback(); }, { once: true });
+          } else {
+            video.src = mp4Url;
+          }
+          if (window.Plyr) {
+            if (plyrInstance) { plyrInstance.destroy(); }
+            plyrInstance = new Plyr(video, { controls: ['play-large','play','progress','current-time','mute','volume','settings','fullscreen'], disableContextMenu: true });
+          }
+          video.addEventListener('playing', function(){ document.getElementById('nks-player-loading').style.display = 'none'; }, { once:true });
+          video.addEventListener('error', function(){ nksShowError('Stream failed to load. Please close and try again.'); });
+          document.getElementById('nks-dl-btn').disabled = false;
+        }).catch(function(err){
+          nksShowError('Could not load this episode: ' + err.message);
+        });
+      }
+      function closePlayer(){
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+        if (wmTimer) { clearInterval(wmTimer); wmTimer = null; }
+        if (nksEmbedTimer) { clearTimeout(nksEmbedTimer); nksEmbedTimer = null; }
+        var nksFrameClose = document.getElementById('nks-embed-frame');
+        if (nksFrameClose) { nksFrameClose.removeAttribute('src'); nksFrameClose.style.display = 'none'; }
+        video.style.display = 'block';
+        nksCurrentServer = null;
+        nksServerFailed = {};
+        try { video.pause(); } catch (e) {}
+        video.removeAttribute('src');
+        video.load();
+        if (plyrInstance) { plyrInstance.destroy(); plyrInstance = null; }
+        if (window.nksHls) { try { window.nksHls.destroy(); } catch(e){} window.nksHls = null; }
+        currentEpId = null;
+      }
+      document.getElementById('nks-player-close').addEventListener('click', closePlayer);
+      document.getElementById('nks-player-video').addEventListener('contextmenu', function(e){ e.preventDefault(); });
+      /* Episode card clicks (cards are rendered dynamically below) */
+      home.addEventListener('click', function(ev){
+        var t = ev.target;
+        var a = null;
+        if (t.closest) { a = t.closest('a.nks-card'); }
+        if (a) {
+          ev.preventDefault();
+          openPlayer(a.getAttribute('data-ep'));
+        }
+      });
+
+      (window.NKS_LOCAL_CATALOG ? Promise.resolve(window.NKS_LOCAL_CATALOG) : fetch(cfg.BACKEND_URL + '/api/catalog').then(function(r){return r.json();})).then(function(cat){
+        var series = cat.series || [];
+        if (!series.length) { home.innerHTML = '<div class="nks-loading">Nothing here yet — check back soon.</div>'; return; }
+        var html = '';
+        html += '<section class="nks-section" id="series"><h2>Choose a series</h2>' +
+                '<p class="nks-sub">What are you in the mood for?</p><div class="nks-series-grid">';
+        series.forEach(function(s, i){
+          var n = (s.episodes || []).length;
+          var art = s.poster_url
+            ? '<img src="' + esc(s.poster_url) + '" alt=""/>'
+            : '<img src="' + NKS_COMING_SOON + '" alt="Coming soon"/>';
+          var bg = 'background:linear-gradient(135deg,' +
+            ['#5a2b8f,#2e90de', '#8f2b4a,#e50914', '#0f6b5c,#2e90de'][i % 3] + ')';
+          html += '<a class="nks-series-card" href="#series-' + esc(s.id) + '">' +
+                  '<div class="nks-series-art" style="' + bg + '">' + art + '</div>' +
+                  '<div class="nks-series-body"><h3></h3><p></p>' +
+                  '<span class="nks-count">' + n + (n === 1 ? ' episode' : ' episodes') + '</span></div></a>';
+        });
+        html += '</div></section>';
+        series.forEach(function(s){
+          var eps = s.episodes || [];
+          html += '<section class="nks-section" id="series-' + esc(s.id) + '"><h2></h2>';
+          if (s.description) html += '<p class="nks-sub"></p>';
+          if (!eps.length) {
+            html += '<div class="nks-coming">Episodes coming soon.</div>';
+          } else {
+            html += '<div class="nks-grid">';
+            eps.forEach(function(e){
+              var poster = e.poster_url ? '<img src="' + esc(e.poster_url) + '" alt=""/>' : '<img src="' + NKS_COMING_SOON + '" alt="Coming soon"/>';
+              html += '<a class="nks-card" href="#watch" data-ep="' + esc(e.id) + '">' +
+                      '<div class="nks-poster">' + poster + '<div class="nks-play"></div></div>' +
+                      '<div class="nks-card-body"><h3></h3>' +
+                      '<div class="nks-card-meta">S' + esc(e.season) + ' &#183; E' + esc(e.episode) + '</div></div></a>';
+            });
+            html += '</div>';
+          }
+          html += '</section>';
+        });
+        home.innerHTML = html;
+        var si = 0;
+        series.forEach(function(s){
+          var card = home.querySelectorAll('.nks-series-card')[si];
+          card.querySelector('h3').textContent = s.title || 'Untitled series';
+          card.querySelector('p').textContent = s.description || '';
+          var sec = document.getElementById('series-' + s.id);
+          sec.querySelector('h2').textContent = s.title || 'Untitled series';
+          if (s.description) sec.querySelector('.nks-sub').textContent = s.description;
+          var cards = sec.querySelectorAll('.nks-card');
+          (s.episodes || []).forEach(function(e, j){
+            cards[j].querySelector('h3').textContent = e.title || 'Untitled';
+          });
+          si++;
+        });
+        var first = null;
+        series.forEach(function(s){ var eps = s.episodes || []; if (!first) { if (eps.length) { first = eps[0]; } } });
+        if (first) {
+          var heroArt = document.getElementById('nks-hero-art');
+          if (heroArt) {
+            heroArt.innerHTML = first.poster_url ? '<img src="' + esc(first.poster_url) + '" alt=""/>' : '<span>&#9654;</span>';
+          }
+          document.getElementById('nks-hero-title').textContent = first.title;
+          document.getElementById('nks-hero-desc').textContent = first.description || '';
+          document.getElementById('nks-hero-play').innerHTML = '&#9654; Play Now';
+          document.getElementById('nks-hero-play').addEventListener('click', function(ev){
+            ev.preventDefault();
+            openPlayer(first.id);
+          });
+        }
+        var nksHash = location.hash.match(/^#watch\/([A-Za-z0-9_-]+)/);
+        if (nksHash) { setTimeout(function(){ openPlayer(nksHash[1]); }, 50); }
+      }).catch(function(){
+        home.innerHTML = '<div class="nks-loading">Could not reach the streaming server — it may be waking up. Try again in a minute.</div>';
+      });
+
+      /* Nostalgia: episode search (old-YouTube masthead box) */
+      function nksFilter(){
+        var inp = document.getElementById('nks-search');
+        var q = inp ? inp.value.toLowerCase() : '';
+        var cards = home.querySelectorAll('.nks-card, .nks-series-card');
+        for (var i = 0; i < cards.length; i++) {
+          var c = cards[i];
+          c.style.display = (!q || c.textContent.toLowerCase().indexOf(q) >= 0) ? '' : 'none';
+        }
+      }
+      var nksForm = document.getElementById('nks-search-form');
+      if (nksForm) { nksForm.addEventListener('submit', function(e){ e.preventDefault(); nksFilter(); }); }
+      var nksSearchInput = document.getElementById('nks-search');
+      if (nksSearchInput) { nksSearchInput.addEventListener('input', nksFilter); }
+    })();
+    //]]>
+    </script>
+  </b:if>
+
+  <b:section class='main' name='Main' showaddelement='no'>
+    <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+      <b:includable id='main' var='top'>
+        <b:if cond='data:blog.url != data:blog.homepageUrl'>
+          <b:loop values='data:posts' var='post'>
+            <div class='nks-page-body'><data:post.body/></div>
+          </b:loop>
+        </b:if>
+      </b:includable>
+    </b:widget>
+  </b:section>
+
+  <footer class='nks-footer'>
+    <div class='nks-brand'>NKS<span class='nks-tube'>AZ</span></div>
+    <p class='nks-disclaimer'><b>Disclaimer:</b> All files are hosted on third-party servers.
+    NKS AZ does not host any files on its own servers &#8212; we only index content that is
+    already available on the internet. For any content removal request, please email us at
+    <a href='mailto:nksaz2511@gmail.com'>nksaz2511@gmail.com</a>.</p>
+    <p class='nks-bestviewed'>Best viewed at 1024x768 &#8212; <a href='mailto:nksaz2511@gmail.com'>Sign our guestbook</a></p>
+    <p>&#169; 2006-2026 <data:blog.title/> &#8212; personal streaming. <span class='nks-counter' id='nks-visit-count'></span></p>
+  </footer>
+  <script>
+  //<![CDATA[
+  (function(){
+    try {
+      var k = 'nksaz_visits';
+      var n = parseInt(localStorage.getItem(k) || '0', 10) + 1;
+      localStorage.setItem(k, String(n));
+      var el = document.getElementById('nks-visit-count');
+      if (el) { el.textContent = 'You have visited ' + n + (n === 1 ? ' time.' : ' times.'); }
+    } catch (e) {}
+  })();
+  //]]>
+  </script>
+<script src='https://cdn.jsdelivr.net/gh/toofunnymates/nks-az-data@main/nks-app.js'></script>
+</body>
+</html>
