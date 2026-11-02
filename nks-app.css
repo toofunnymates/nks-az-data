@@ -17,3 +17,5 @@
   .nks-series-card{transition:transform .18s ease,box-shadow .18s ease}
   .nks-series-card:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.35)}
   .nks-xpbtn:active{transform:translateY(1px)}
+  /* User request 2026-11-02: remove Featured Video hero */
+  .nks-hero{display:none!important}
