@@ -77,53 +77,89 @@ function buildEpisodes(){
 /* Player */
 var NKS_SERVERS={};
 var NKS_POSTERS={};
+function nksDecode(enc,epId,prov){
+  var clean=String(enc||'').replace(/-/g,'+').replace(/_/g,'/');
+  while(clean.length%4)clean+='=';
+  try{
+    var bin=atob(clean);
+    var key='nksaz.blogspot.com|'+epId+'|'+prov;
+    var out='';
+    for(var i=0;i<bin.length;i++)out+=String.fromCharCode(bin.charCodeAt(i)^key.charCodeAt(i%key.length));
+    try{return decodeURIComponent(escape(out));}catch(e){return out;}
+  }catch(e){return null;}
+}
 function openPlayer(epId){
   var overlay=document.getElementById('nks-player-overlay');
   var frame=document.getElementById('nks-embed-frame');
   var title=document.getElementById('nks-ep-title');
+  var meta=document.getElementById('nks-ep-meta');
   var loading=document.getElementById('nks-player-loading');
   var err=document.getElementById('nks-player-err');
+  var serverList=document.getElementById('nks-server-list');
+  var serverStatus=document.getElementById('nks-server-status');
   if(!overlay||!frame)return;
-  /* Find episode title */
   var cat=window.NKS_LOCAL_CATALOG;
-  var epTitle=epId;
-  if(cat){(cat.series||[]).forEach(function(s){(s.episodes||[]).forEach(function(e){if(e.id===epId)epTitle=e.title||epId;});});}
+  var epTitle=epId, epSeason='', epNum='';
+  if(cat){(cat.series||[]).forEach(function(s){(s.episodes||[]).forEach(function(e){if(e.id===epId){epTitle=e.title||epId;epSeason=e.season;epNum=e.episode;}});});}
   title.textContent=epTitle;
+  if(meta)meta.textContent=(epSeason!==''?'Season '+epSeason+' ':'')+(epNum!==''?'Episode '+epNum:'');
   err.textContent='';
   loading.style.display='';
   overlay.style.display='block';
   document.body.style.overflow='hidden';
-  /* Get server URL from live JSON */
-  var srv=NKS_SERVERS[epId];
-  var url=null;
-  if(srv){
-    /* srv is {provider: {enc: ...}} - need to decode */
-    /* For now, use the first available */
-    for(var prov in srv){
-      if(srv[prov]&&srv[prov].enc){
-        /* The enc is XOR+base64, need key. Simplified: use live JSON directly via fetch */
-        break;
-      }
-    }
-  }
-  /* Fetch live JSON to get the actual embed URL */
+  if(serverStatus)serverStatus.textContent='Finding best server...';
   fetch(JSON_URL).then(function(r){return r.json();}).then(function(d){
     var servers=d.servers||{};
-    var epServers=servers[epId];
-    if(epServers){
-      /* Try to find a usable URL - the live JSON has enc, we need to decode */
-      /* For v2, we'll use a simplified approach: the manifest has the actual URLs */
-      /* Actually, let's just show an error and direct to the blog post */
+    var epServers=servers[epId]||NKS_SERVERS[epId];
+    if(!epServers){
       loading.style.display='none';
-      err.textContent='Player loading... (If video does not start, the episode may still be uploading.)';
-      /* TODO: Decode the XOR enc or fetch from a simpler endpoint */
-    }else{
-      loading.style.display='none';
-      err.textContent='This episode is not yet available on the streaming server.';
+      err.textContent='This episode is not yet available. New episodes are being added daily.';
+      if(serverStatus)serverStatus.textContent='No servers yet';
+      return;
     }
+    var decoded=[];
+    for(var prov in epServers){
+      var ref=epServers[prov];
+      var enc=ref&&ref.enc?ref.enc:null;
+      if(enc){
+        var url=nksDecode(enc,epId,prov);
+        if(url)decoded.push({prov:prov,url:url});
+      }
+    }
+    if(!decoded.length){
+      loading.style.display='none';
+      err.textContent='Could not load video servers.';
+      return;
+    }
+    if(serverList){
+      serverList.innerHTML='';
+      decoded.forEach(function(s,i){
+        var btn=document.createElement('button');
+        btn.className='nks-server-btn'+(i===0?' active':'');
+        btn.textContent='Server '+(i+1);
+        btn.onclick=function(){
+          var all=serverList.querySelectorAll('.nks-server-btn');
+          for(var j=0;j<all.length;j++)all[j].classList.remove('active');
+          btn.classList.add('active');
+          loading.style.display='';
+          frame.src=s.url;
+          if(serverStatus)serverStatus.textContent='Playing via Server '+(i+1);
+        };
+        serverList.appendChild(btn);
+      });
+    }
+    loading.style.display='none';
+    frame.src=decoded[0].url;
+    if(serverStatus)serverStatus.textContent='Playing via Server 1';
+    var copyBtn=document.getElementById('nks-copy-link');
+    if(copyBtn)copyBtn.onclick=function(){
+      var url=location.origin+location.pathname+'#watch/'+epId;
+      if(navigator.clipboard)navigator.clipboard.writeText(url).then(function(){copyBtn.textContent='Copied!';setTimeout(function(){copyBtn.textContent='Copy episode link';},2000);});
+    };
   }).catch(function(){
     loading.style.display='none';
-    err.textContent='Could not reach the streaming server.';
+    err.textContent='Could not reach the streaming server. Try again in a minute.';
+    if(serverStatus)serverStatus.textContent='Connection failed';
   });
 }
 function closePlayer(){
