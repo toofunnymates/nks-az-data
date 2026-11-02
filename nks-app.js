@@ -97,6 +97,11 @@
     fetch(JSON_URL).then(function(r){return r.json()}).then(function(d){
       var cats=d.categories||{};
       var posters=d.posters||{};NKS_POSTERS=posters;
+      var sp=d.series_posters||{};
+      for(var sid in sp){
+        var cards=document.querySelectorAll('a.nks-series-card[href="#series-'+sid+'"] img');
+        for(var si=0;si<cards.length;si++){cards[si].src=sp[sid];}
+      }
       var sv=d.servers||{};
       for(var k in sv){if(window.NKS_SERVER_DATA&&window.NKS_SERVER_DATA.episodes)window.NKS_SERVER_DATA.episodes[k]=sv[k];}
       series.forEach(function(s){
